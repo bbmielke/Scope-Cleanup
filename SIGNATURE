@@ -1,0 +1,48 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.63.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 f5ed3a8c7ded1df90824e569287cfe062d1807ef .cvsignore
+SHA1 d9f7e191d486ccb95c564745516cd7c43342e680 Build.PL
+SHA1 7be388c5c140ec7d41cd8f14e145c5245cfa5c68 Changes
+SHA1 cb147eae856e4ed75269b92fd3bb9c6c642a5b81 MANIFEST
+SHA1 85b7772f08c0fbf76575b31cd003f056aa7c9b24 META.yml
+SHA1 cbe646e9eec8e4cf1175c7fd8cb87a31ad241a82 Makefile.PL
+SHA1 c9f77ffb970d7af528d0ab74c743c6a287e8f151 README
+SHA1 3253f1d322ff5098bb9a540fe2551314c06e7e13 lib/Scope/.cvsignore
+SHA1 35116492fc7a7bba04b011f4e00beaefff75244a lib/Scope/Cleanup.pm
+SHA1 1187e427ec421d6033c46be2caeb56849c6510cf lib/Scope/Cleanup.xs
+SHA1 e8b04765297a6f9d16246fb804a2340928359ffe t/caller.t
+SHA1 cb14a2902760dca7194b6b180eec57149ac99d74 t/context.t
+SHA1 63cce23aa95e3991cfe4bf6ff265d9139bb999ea t/die.t
+SHA1 a3cc405d6ea93579af81d8dab62bd9ba0d481ddb t/error.t
+SHA1 870bb435ac0b1e016ada7f648b8c6894ffe8c3b7 t/escape.t
+SHA1 f4465409f78a87440325a988ee00e1cc49454fc8 t/exit.t
+SHA1 0e141eecf3ca4903ef38d9413b5403a9ddb0392f t/pod_cvg.t
+SHA1 74a957cd8b93f25672ecc6aa578a671d084dd343 t/pod_syn.t
+SHA1 a71df8027625d207c7a47cf7e2f45a67e39143b6 t/scope.t
+SHA1 354ac411c197257c2cefc14701e5ad6e5e43d187 t/via_death.t
+SHA1 0b1c333d723a700a89d1821c7399e01eaddff6fd t/via_die.t
+SHA1 bf960ffa4692251443d2c32205634348cf265fce t/via_escape.t
+SHA1 d0598d31a5bee3088d85cef26f40d5aabb8b0ff6 t/via_exit.t
+SHA1 4368c21ddc37c0beff442c8f513077717ee9cce0 t/via_localret.t
+SHA1 0ddd52d73862b10cb79c135f59f612eecbfa8180 t/via_return.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+iEYEARECAAYFAkvBBN4ACgkQOV9mt2VyAVGB+QCfb0KlJK4/cGw45F0U3A+jo1Ra
+z1IAoI+huuiPjhCHQ7biQRIXlrNo+adT
+=hb3t
+-----END PGP SIGNATURE-----
