@@ -21,6 +21,7 @@ t/via_death.t
 t/via_die.t
 t/via_escape.t
 t/via_exit.t
-t/via_localret.t
+t/via_fmtlocalret.t
 t/via_return.t
+t/via_sublocalret.t
 SIGNATURE    Added here by Module::Build

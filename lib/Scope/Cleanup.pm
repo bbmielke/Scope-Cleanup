@@ -71,16 +71,19 @@ because that is actually part of an I/O handle's persistent state.
 However, the choice of which I/O handle the variable looks at is such
 temporary status.)
 
-If some code that incidentally overwrites one of the status variables is
-somehow executed between a relevant operation and the code that expected
-to read the variable, then the wrong value will be read.  The most
-serious type of problem occurs with C<eval> setting C<$@>, where reading
-the correct value from C<$@> is almost always critical to the next bit
-of program logic.  C<die> is also much more vulnerable to having the
-variable clobbered than are operations involving the other variables.
-When C<die>ing, C<$@> gets set first, then the stack unwinds, and only
+If some code that incidentally overwrites one of the status variables
+is somehow executed between a relevant operation and the code that
+expected to read the variable, then the wrong value will be read.
+The most serious type of problem occurs with C<eval> setting C<$@>,
+where reading the correct value from C<$@> is almost always critical to
+the next bit of program logic.  Also, prior to Perl 5.13.1, C<die> is
+much more vulnerable to having the variable clobbered than are operations
+involving the other variables.  When C<die>ing on an older Perl, C<$@>
+gets set first, then the stack unwinds to the eval frame, and only
 then does C<eval> complete.  So there is a large window of opportunity
 during unwinding for C<$@> to lose the exception that is being thrown.
+From Perl 5.13.1 onwards that particular vulnerability has been fixed,
+but C<$@> can still potentially be clobbered after C<eval> completes.
 
 There are three main ways that lexically remote code could get run
 unexpectedly: signal handlers, object destructors, and scope cleanup code.
@@ -111,7 +114,7 @@ with "C<local($., $@, $!, $^E, $?);>".  This should be done as early as
 possible in the signal handler, destructor, or cleanup function.
 
 If a scope cleanup function intends to exit by C<die>, there is a
-complication.  In this case, localising C<$@> would prevent the C<die>
+complication.  Prior to Perl 5.13.1, localising C<$@> prevents the C<die>
 from working normally: the restoration of the previous value will itself
 clobber C<$@> for the purposes of that C<die>.  (This is due to C<$@>
 being set early in the C<die>, as described above.)  In this case, the
@@ -119,7 +122,9 @@ cleanup function must not localise C<$@>, and must make other arrangements
 to avoid clobbering C<$@> in the event that it does not exit by C<die>.
 
 There is ongoing discussion about changing some of the Perl core's
-semantics, to make the above more tractable.
+semantics, to make the above more tractable.  The changes to C<$@>
+behaviour in Perl 5.13.1 were a result of these concerns, and further
+change is likely.
 
 =cut
 
@@ -129,7 +134,7 @@ package Scope::Cleanup;
 use warnings;
 use strict;
 
-our $VERSION = "0.000";
+our $VERSION = "0.001";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(establish_cleanup);

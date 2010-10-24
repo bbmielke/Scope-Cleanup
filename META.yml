@@ -12,6 +12,8 @@ build_requires:
 configure_requires:
   Module::Build: 0
   perl: 5.008001
+  strict: 0
+  warnings: 0
 distribution_type: module
 dynamic_config: 0
 generated_by: 'Module::Build version 0.3607'
@@ -23,7 +25,7 @@ name: Scope-Cleanup
 provides:
   Scope::Cleanup:
     file: lib/Scope/Cleanup.pm
-    version: 0.000
+    version: 0.001
 requires:
   Exporter: 0
   XSLoader: 0
@@ -33,4 +35,4 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.000
+version: 0.001

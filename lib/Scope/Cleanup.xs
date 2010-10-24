@@ -1,3 +1,4 @@
+#define PERL_NO_GET_CONTEXT 1
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
@@ -8,19 +9,16 @@
 #define PERL_VERSION_GE(r,v,s) \
 	(PERL_DECIMAL_VERSION >= PERL_VERSION_DECIMAL(r,v,s))
 
-#define CATCHER_MIGHT_USE_GHOST_CONTEXT \
-	(PERL_VERSION_GE(5,9,3) || \
-	 (!PERL_VERSION_GE(5,9,0) && PERL_VERSION_GE(5,8,0)))
+#define Q_MUST_PRESERVE_GHOST_CONTEXT 1
 
 static void run_cleanup(pTHX_ void *cleanup_code_ref)
 {
-#if CATCHER_MIGHT_USE_GHOST_CONTEXT
+#if Q_MUST_PRESERVE_GHOST_CONTEXT
 	bool have_ghost_context;
 	PERL_CONTEXT ghost_context;
-	have_ghost_context = cxstack_ix < cxstack_max &&
-				CxTYPE(&cxstack[cxstack_ix+1]) == CXt_EVAL;
+	have_ghost_context = cxstack_ix < cxstack_max;
 	if(have_ghost_context) ghost_context = cxstack[cxstack_ix+1];
-#endif /* CATCHER_MIGHT_USE_GHOST_CONTEXT */
+#endif /* Q_MUST_PRESERVE_GHOST_CONTEXT */
 	ENTER;
 	SAVETMPS;
 	{
@@ -28,9 +26,9 @@ static void run_cleanup(pTHX_ void *cleanup_code_ref)
 		PUSHMARK(SP);
 	}
 	call_sv((SV*)cleanup_code_ref, G_VOID|G_DISCARD);
-#if CATCHER_MIGHT_USE_GHOST_CONTEXT
+#if Q_MUST_PRESERVE_GHOST_CONTEXT
 	if(have_ghost_context) cxstack[cxstack_ix+1] = ghost_context;
-#endif /* CATCHER_MIGHT_USE_GHOST_CONTEXT */
+#endif /* Q_MUST_PRESERVE_GHOST_CONTEXT */
 	FREETMPS;
 	LEAVE;
 }
@@ -121,6 +119,8 @@ static OP *myck_entersub(pTHX_ OP *op)
 
 MODULE = Scope::Cleanup PACKAGE = Scope::Cleanup
 
+PROTOTYPES: DISABLE
+
 BOOT:
 	establishcleanup_cv = get_cv("Scope::Cleanup::establish_cleanup", 0);
 	nxck_entersub = PL_check[OP_ENTERSUB];
@@ -130,4 +130,5 @@ void
 establish_cleanup(...)
 PROTOTYPE: $
 CODE:
+	PERL_UNUSED_VAR(items);
 	croak("establish_cleanup called as a function");
