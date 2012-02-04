@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.66.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,16 +14,16 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 f5ed3a8c7ded1df90824e569287cfe062d1807ef .cvsignore
-SHA1 4251178f13636ac997e854e0408290747756425b Build.PL
-SHA1 bb21bf41029604fe030a75af22f50c3d31027a59 Changes
-SHA1 fc80c23e4a90b6f5bdb2b3fb98cf0067e799a378 MANIFEST
-SHA1 dfd5e4c4bf69a8ff6f36c7a785fad60a31e38ed6 META.yml
-SHA1 cbe646e9eec8e4cf1175c7fd8cb87a31ad241a82 Makefile.PL
-SHA1 c9f77ffb970d7af528d0ab74c743c6a287e8f151 README
-SHA1 3253f1d322ff5098bb9a540fe2551314c06e7e13 lib/Scope/.cvsignore
-SHA1 c18fd1fbcb9627beab1dc7d169388d5dc7bffa0c lib/Scope/Cleanup.pm
-SHA1 d6b10ba184cd17d416783474987376aa06b12373 lib/Scope/Cleanup.xs
+SHA1 3ec943112e5232abeb9fd1374355c5513be1e04b .gitignore
+SHA1 a456b26eb594e685689a057c353379a08c299c08 Build.PL
+SHA1 1430dfe1b43a1e17fda08167ee86abd4f1f62b10 Changes
+SHA1 d72747413a44e1650e0d784107455aaf4ada30ea MANIFEST
+SHA1 1e96c26de4a6427beae6a7fe9b405bbd26d8ea35 META.json
+SHA1 a0bfcc7e466ebab2a63bfc9e9b14b69f8a1211ff META.yml
+SHA1 53380dfd209add8663abe51f6ee717b92e03c861 Makefile.PL
+SHA1 062664f5ebb85f54aa712ae1c7bdb7de9cd80050 README
+SHA1 ba5e8152f5a720dd363d31496a87ca77ffc680b6 lib/Scope/Cleanup.pm
+SHA1 bbc7e765a7f1772cb434adadd08de7de0a7db260 lib/Scope/Cleanup.xs
 SHA1 e8b04765297a6f9d16246fb804a2340928359ffe t/caller.t
 SHA1 cb14a2902760dca7194b6b180eec57149ac99d74 t/context.t
 SHA1 63cce23aa95e3991cfe4bf6ff265d9139bb999ea t/die.t
@@ -41,9 +41,9 @@ SHA1 04087e00138a5ca63ed4ac9d3bb0719bdb3602c5 t/via_fmtlocalret.t
 SHA1 0ddd52d73862b10cb79c135f59f612eecbfa8180 t/via_return.t
 SHA1 4368c21ddc37c0beff442c8f513077717ee9cce0 t/via_sublocalret.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.9 (GNU/Linux)
+Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkzEaYwACgkQOV9mt2VyAVHcUwCffqgbeUzY6c7X9gUZWyOzvSup
-Fe8AnROlmPZfvpjrI0KVNKAVuJDisBLh
-=Pn0A
+iEYEARECAAYFAk8tRkoACgkQOV9mt2VyAVEcXwCeM5UJJddGNIUCBUQzO/d6iijl
+384An3fFacKU5+53R5fgjaaTZlApECF2
+=sjxp
 -----END PGP SIGNATURE-----

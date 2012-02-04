@@ -1,3 +1,17 @@
+version 0.002; 2012-02-04
+
+  * don't preserve ghost context on Perl 5.13.7 and above, where the
+    core's reliance on it has supposedly been rectified
+
+  * trigger custom op generation via Devel::CallChecker rather than by
+    hooking the underlying op checker
+
+  * include META.json in distribution
+
+  * convert .cvsignore to .gitignore
+
+  * add MYMETA.json to .cvsignore
+
 version 0.001; 2010-10-24
 
   * bugfix: during unwinding, preserve ghost context regardless of

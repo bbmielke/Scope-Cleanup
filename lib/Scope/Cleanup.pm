@@ -134,7 +134,9 @@ package Scope::Cleanup;
 use warnings;
 use strict;
 
-our $VERSION = "0.001";
+use Devel::CallChecker 0.003 ();
+
+our $VERSION = "0.002";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(establish_cleanup);
@@ -171,7 +173,7 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2010 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2010, 2012 Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 

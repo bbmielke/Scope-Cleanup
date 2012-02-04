@@ -1,11 +1,11 @@
-.cvsignore
+.gitignore
 Build.PL
 Changes
 MANIFEST
+META.json
 META.yml
 Makefile.PL
 README
-lib/Scope/.cvsignore
 lib/Scope/Cleanup.pm
 lib/Scope/Cleanup.xs
 t/caller.t
