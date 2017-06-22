@@ -65,11 +65,11 @@ static OP *myck_entersub_establish_cleanup(pTHX_ OP *entersubop,
 	OP *pushop, *argop;
 	entersubop = ck_entersub_args_proto(entersubop, namegv, protosv);
 	pushop = cUNOPx(entersubop)->op_first;
-	if(!pushop->op_sibling) pushop = cUNOPx(pushop)->op_first;
-	argop = pushop->op_sibling;
+	if(!OpHAS_SIBLING(pushop)) pushop = cUNOPx(pushop)->op_first;
+	argop = OpSIBLING(pushop);
 	if(!argop) return entersubop;
-	pushop->op_sibling = argop->op_sibling;
-	argop->op_sibling = NULL;
+	OpMORESIB_set(pushop,OpSIBLING(argop));
+	OpLASTSIB_set(argop, NULL);
 	op_free(entersubop);
 	return gen_establish_cleanup_op(argop);
 }
